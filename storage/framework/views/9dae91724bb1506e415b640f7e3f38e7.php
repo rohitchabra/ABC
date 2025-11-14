@@ -12,13 +12,17 @@
         Job Listings
      <?php $__env->endSlot(); ?>
     
-    <?php $__currentLoopData = $jobs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $job): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-    <ul>
-        <a href="/jobs/<?php echo e($job['id']); ?>"  class="text-blue-500 hover:underline">
-            <li><strong><?php echo e($job['title']); ?></strong> Pays: <?php echo e($job['salary']); ?> per year <br></li>
-        </a>  
-    </ul>
-    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    <div class="space-y-4">
+        <?php $__currentLoopData = $jobs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $job): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <a href="/jobs/<?php echo e($job['id']); ?>"  class="block px-4 py-2 border-b border-gray-200 rounded-lg">
+                <div class="font-bold text-blue-500 text-sm">Employer:
+                     <?php echo e($job->employer->name); ?>
+
+                    </div>
+                <div><strong><?php echo e($job['title']); ?></strong> Pays: <?php echo e($job['salary']); ?> per year <br></div>
+            </a> 
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    </div>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__attributesOriginal23a33f287873b564aaf305a1526eada4)): ?>

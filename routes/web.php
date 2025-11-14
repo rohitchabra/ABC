@@ -5,7 +5,8 @@ use Illuminate\Support\Arr;
 use App\Models\Job;
 
 Route::get('/', function () {
-    //$jobs = Job::all();
+    $jobs = Job::all();
+    
     //dd($jobs);
     return view('home');
 });
@@ -17,7 +18,7 @@ Route::get('/jobs/{id}', function ($id) {
 
 Route::get('/jobs', function () {
     return view('jobs', [
-        'jobs' => Job::all()  
+        'jobs' => Job::with('employer')->get()  
     ]);
 });
 
